@@ -6,7 +6,12 @@ var t = "";
 for (let elem of backgroundJS.settings.unproductiveWebsites.entries()){
       var tr = "<tr>";
       tr += "<td>"+elem[0]+"</td>";
-      tr += "<td>"+elem[1]+"</td>";
+      tr += `<td>
+                <input type="button" id="save" value="Save" style="float: right" onclick="saveTime()" />
+                <div style="overflow: hidden; padding-right: .5em; padding-left: 0">
+                    <input type="text" id="website-time" style="width: 100%;" value=`+elem[1]+` />
+                </div>
+            </td>`;
       tr += "</tr>";
       t += tr;
 }
@@ -20,6 +25,10 @@ function addWebsite() {
     alert(backgroundJS.settings.unproductiveWebsites.size);
 
     var table = document.getElementById("website-table");
-
-    table.innerHTML += '<tr><td>https://'+url+'</td><td>'+backgroundJS.settings.unproductiveTime+'</td></tr>';
+    
+    table.innerHTML += '<tr><td>https://'+url+'</td>'+`<td>
+    <input type="button" id="save" value="Save" style="float: right" onclick="saveTime()" />
+    <div style="overflow: hidden; padding-right: .5em; padding-left: 0">
+        <input type="text" id="website-time" style="width: 100%;" value=`+backgroundJS.settings.unproductiveTime+` />
+    </div></td>`;
 };
